@@ -31,14 +31,14 @@
                         Обновить таймзону
                     </h2>
 
-                    <form method="post" action="" class="space-y-6">
+                    <form method="post" action="{{ route("timezone.update") }}" class="space-y-6">
                         @csrf
                         @method('put')
 
                         <div>
-                            <select class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" name="timezone" id="timezone">
+                            <select class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" name="timezone">
                                 @foreach(timeZoneList() as $timezone => $timezone_gmt_diff)
-                                    <option value="{{ $timezone }}" {{ ( $timezone === old('timezone', $user->timezone)) ? 'selected' : '' }}>
+                                    <option value="{{ $timezone }}" {{ $timezone === $user->timezone ? 'selected' : '' }}>
                                         {{ $timezone_gmt_diff }}
                                     </option>
                                 @endforeach
@@ -48,7 +48,7 @@
                         <div class="flex items-center gap-4">
                             <x-primary-button>{{ __('Save') }}</x-primary-button>
 
-                            @if (session('status') === 'password-updated')
+                            @if (session('status') === 'timezone-updated')
                                 <p
                                         x-data="{ show: true }"
                                         x-show="show"
@@ -59,14 +59,6 @@
                             @endif
                         </div>
                     </form>
-                    {{--<label class="required" for="timezone">{{ __('TimeZone') }}</label>
-                    <select class="form-control" name="timezone" id="timezone">
-                        @foreach(timeZoneList() as $timezone => $timezone_gmt_diff)
-                            <option value="{{ $timezone }}" {{ ( $timezone === old('timezone', $user->timezone)) ? 'selected' : '' }}>
-                                {{ $timezone_gmt_diff }}
-                            </option>
-                        @endforeach
-                    </select>--}}
                 </div>
             </div>
         </div>

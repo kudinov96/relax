@@ -48,8 +48,7 @@ class User extends Authenticatable
     public function timeZone(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) =>  config('app.timezone') || empty($value) ? config('app.timezone') : $value,
-            set: fn ($value) =>  $value == config('app.timezone') || is_null($value) ? null : $value,
+            get: fn ($value) =>  config('app.timezone') && empty($value) ? config('app.timezone') : $value,
         );
     }
 }
