@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(["middleware" => ['auth', 'verified']], function() {
     Route::get('logs', [LogController::class, "index"])->name("log.index");
+    Route::get('logs/{item}', [LogController::class, "show"])->name("log.show");
 });
 
 /*Route::get('/dashboard', function () {

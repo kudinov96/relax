@@ -22,6 +22,9 @@ class Log extends Model
 
     protected $table   = "logs";
     protected $guarded = ["id"];
+    protected $casts   = [
+        "response" => "json"
+    ];
 
     public function chair(): BelongsTo
     {

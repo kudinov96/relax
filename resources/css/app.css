@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bg-brown{
+    background-color: #82655F;
+}
+
+.bg-brown-light{
+    background-color: #a69693;
+}
+
+.border-brown{
+    border-color: #82655F;
+}
+
+.text-brown{
+    color: #82655F;
+}
