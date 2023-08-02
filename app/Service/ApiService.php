@@ -5,7 +5,7 @@ namespace App\Service;
 use App\Models\Chair;
 use Illuminate\Support\Facades\Http;
 
-class SofocnApiService
+class ApiService
 {
     private string $url = "https://isf.sofocn.com/api/";
 
