@@ -21,6 +21,12 @@ Route::group(["middleware" => ['auth', 'verified']], function() {
     Route::get('logs/{item}', [LogController::class, "show"])->name("log.show");
 });
 
+Route::group(["prefix" => "relax"], function() {
+    Route::get("/", function() {
+        return view("front.index");
+    });
+});
+
 /*Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');*/
