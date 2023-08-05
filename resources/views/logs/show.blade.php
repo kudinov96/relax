@@ -20,7 +20,7 @@
                         </div>
                         <div>
                             <p class="font-bold mb-2">Ответ</p>
-                            @dump($item->response)
+                            @dump(json_decode($item->response))
                         </div>
                     </div>
                 </div>

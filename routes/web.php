@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\LogController;
+    use App\Http\Controllers\ChairController;
+    use App\Http\Controllers\LogController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,10 +22,8 @@ Route::group(["middleware" => ['auth', 'verified']], function() {
     Route::get('logs/{item}', [LogController::class, "show"])->name("log.show");
 });
 
-Route::group(["prefix" => "relax"], function() {
-    Route::get("/", function() {
-        return view("front.index");
-    });
+Route::group(["prefix" => "chair"], function() {
+    Route::get("/{chair}", [ChairController::class, "show"])->name("chair.show");
 });
 
 /*Route::get('/dashboard', function () {

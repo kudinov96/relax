@@ -20,6 +20,7 @@ class ChairFactory extends Factory
         return [
             "device_id"   => $this->faker->uuid,
             "device_code" => $this->faker->uuid,
+            "status"      => 0,
             "created_at"  => Carbon::now(),
             "updated_at"  => Carbon::now(),
         ];
