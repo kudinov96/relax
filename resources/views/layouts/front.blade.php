@@ -12,7 +12,7 @@
     <header>
         <div class="container">
             <div class="branding">
-                <a href="#"><img src="{{ asset("images/logo.svg") }}" width="149" height="44" alt=""></a>
+                <a href="{{ route("chair.show", ["chair" => $chair]) }}"><img src="{{ asset("images/logo.svg") }}" width="149" height="44" alt=""></a>
             </div>
             <div class="lang">
                 <a href="#">LV</a>

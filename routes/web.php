@@ -24,6 +24,10 @@ Route::group(["middleware" => ['auth', 'verified']], function() {
 
 Route::group(["prefix" => "chair"], function() {
     Route::get("/{chair}", [ChairController::class, "show"])->name("chair.show");
+    Route::get("/{chair}/ready/{minutes}/{costs}", [ChairController::class, "ready"])->name("chair.ready");
+    Route::get("/{chair}/success/{minutes}", [ChairController::class, "success"])->name("chair.success");
+    Route::get("/{chair}/fail/payment", [ChairController::class, "failPayment"])->name("chair.fail.payment");
+    Route::get("/{chair}/fail/chair", [ChairController::class, "failChair"])->name("chair.fail.payment");
 });
 
 /*Route::get('/dashboard', function () {

@@ -23,10 +23,7 @@
         <div id="info-text" class="info-price info-bg">
             <div class="container">
                 <p>Выберите длительность массажа</p>
-                <p><a class="btn">10 минут - €5.00</a></p>
-                <p><a class="btn">15 минут - €7.00</a></p>
-                <p><a class="btn hot">20 минут - €9.00</a></p>
-                <p><a class="btn">30 минут - €11.00</a></p>
+                @include("rates")
             </div>
         </div>
     @endif
