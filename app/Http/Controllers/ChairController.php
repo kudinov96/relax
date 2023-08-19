@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Chair;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use WebToPay;
 
 class ChairController extends Controller
 {
@@ -16,22 +18,12 @@ class ChairController extends Controller
 
     public function ready(Chair $chair, int $minutes, int $costs)
     {
-        $rates = [
-            10 => 5,
-            15 => 7,
-            20 => 9,
-            30 => 11,
-        ];
-
-        if (!isset($rates[$minutes]) || $rates[$minutes] !== $costs) {
-            abort(404);
-        }
-
-        $paymentLink = null;
+        $this->validateRates($minutes, $costs);
 
         return view("front.chair.ready", [
-            "chair"       => $chair,
-            "paymentLink" => $paymentLink,
+            "chair"   => $chair,
+            "minutes" => $minutes,
+            "costs"   => $costs,
         ]);
     }
 
@@ -62,5 +54,46 @@ class ChairController extends Controller
         return view("front.chair.fail.chair", [
             "chair" => $chair,
         ]);
+    }
+
+    public function redirectToPayment(Chair $chair, int $minutes, int $costs)
+    {
+        $this->validateRates($minutes, $costs);
+
+        try {
+            WebToPay::redirectToPayment([
+                'projectid' => config('webtopay.projectid'),
+                'sign_password' => config('webtopay.sign_password'),
+                'orderid' => 0,
+                'amount' => $costs,
+                'currency' => 'EUR',
+                'country' => 'LT',
+                'accepturl' => route("chair.success", ["chair" => $chair, "minutes" => $minutes]),
+                'cancelurl' => route("chair.fail.payment", ["chair" => $chair]),
+                'callbackurl' => route("chair.callback", ["chair" => $chair, "minutes" => $minutes, "costs" => $costs]),
+                'test' => 1,
+            ]);
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+        }
+    }
+
+    public function callbackPayment(Request $request, Chair $chair, int $minutes, int $costs)
+    {
+        Log::debug(print_r($request->all(), true));
+    }
+
+    private function validateRates(int $minutes, int $costs)
+    {
+        $rates = [
+            10 => 5,
+            15 => 7,
+            20 => 9,
+            30 => 11,
+        ];
+
+        if (!isset($rates[$minutes]) || $rates[$minutes] !== $costs) {
+            abort(404);
+        }
     }
 }

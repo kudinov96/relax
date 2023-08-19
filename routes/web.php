@@ -28,6 +28,9 @@ Route::group(["prefix" => "chair"], function() {
     Route::get("/{chair}/success/{minutes}", [ChairController::class, "success"])->name("chair.success");
     Route::get("/{chair}/fail/payment", [ChairController::class, "failPayment"])->name("chair.fail.payment");
     Route::get("/{chair}/fail/chair", [ChairController::class, "failChair"])->name("chair.fail.payment");
+
+    Route::get("/{chair}/ready/{minutes}/{costs}/redirect", [ChairController::class, "redirectToPayment"])->name("chair.redirect");
+    Route::post("/{chair}/ready/{minutes}/{costs}/callback", [ChairController::class, "callbackPayment"])->name("chair.callback");
 });
 
 /*Route::get('/dashboard', function () {
