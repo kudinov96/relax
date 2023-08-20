@@ -12,10 +12,6 @@ class ChairController extends Controller
     {
         $status = $chairService->getStatus($chair);
 
-        if ($status === null) {
-            // Тут нужно выводить страницу, когда получение статус кресла невозможно
-        }
-
         return view("front.chair.show", [
             "chair"  => $chair,
             "status" => $status,
@@ -53,15 +49,15 @@ class ChairController extends Controller
         // Тут нужен какой-нибудь токен, так как это уязвимость
         // Кто-то может зайти на эту страницу и сидеть в кресле сколько угодно
 
-        $status = $chairService->getStatus($order->chair);
+        //$status = $chairService->getStatus($order->chair);
 
-        if ($status === null) {
+        //if ($status === null) {
             // Тут нужно выводить страницу, когда получение статус кресла невозможно
-        }
+        //}
 
-        if ($status === 3) {
-            abort(404);
-        }
+        //if ($status === 3) {
+            //abort(404);
+        //}
 
         return view("front.chair.fail.chair", [
             "chair" => $order->chair,
