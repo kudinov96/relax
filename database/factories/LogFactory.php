@@ -6,7 +6,7 @@ use App\Models\Chair;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Log>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\LogChair>
  */
 class LogFactory extends Factory
 {

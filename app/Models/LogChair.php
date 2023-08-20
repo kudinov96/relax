@@ -17,11 +17,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property Carbon $created_at
  * @property Carbon $updated_at
  */
-class Log extends Model
+class LogChair extends Model
 {
     use HasFactory;
 
-    protected $table   = "logs";
+    protected $table   = "logs_chairs";
     protected $guarded = ["id"];
     protected $casts   = [
         "response" => "json"
@@ -30,6 +30,11 @@ class Log extends Model
     public function chair(): BelongsTo
     {
         return $this->belongsTo(Chair::class);
+    }
+
+    public function order(): BelongsTo
+    {
+        return $this->belongsTo(Order::class);
     }
 
     public function createdAt(): Attribute

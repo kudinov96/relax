@@ -2,7 +2,9 @@
 
     use App\Http\Controllers\ChairController;
     use App\Http\Controllers\LogController;
-use App\Http\Controllers\ProfileController;
+    use App\Http\Controllers\OrderController;
+    use App\Http\Controllers\PaymentController;
+    use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +22,9 @@ use Illuminate\Support\Facades\Route;
 Route::group(["middleware" => ['auth', 'verified']], function() {
     Route::get('logs', [LogController::class, "index"])->name("log.index");
     Route::get('logs/{item}', [LogController::class, "show"])->name("log.show");
+
+    Route::get('orders', [OrderController::class, "index"])->name("order.index");
+    Route::get('orders/{item}', [OrderController::class, "show"])->name("order.show");
 });
 
 Route::group(["prefix" => "chair"], function() {
@@ -27,10 +32,12 @@ Route::group(["prefix" => "chair"], function() {
     Route::get("/{chair}/ready/{minutes}/{costs}", [ChairController::class, "ready"])->name("chair.ready");
     Route::get("/{chair}/success/{minutes}", [ChairController::class, "success"])->name("chair.success");
     Route::get("/{chair}/fail/payment", [ChairController::class, "failPayment"])->name("chair.fail.payment");
-    Route::get("/{chair}/fail/chair", [ChairController::class, "failChair"])->name("chair.fail.payment");
+    Route::get("/{order}/fail/chair", [ChairController::class, "failChair"])->name("chair.fail.chair");
 
-    Route::get("/{chair}/ready/{minutes}/{costs}/redirect", [ChairController::class, "redirectToPayment"])->name("chair.redirect");
-    Route::post("/{chair}/ready/{minutes}/{costs}/callback", [ChairController::class, "callbackPayment"])->name("chair.callback");
+    Route::get("/{chair}/ready/{minutes}/{costs}/redirect", [PaymentController::class, "redirectPayment"])->name("payment.redirect");
+    Route::get("/{order}/payment/accept", [PaymentController::class, "paymentAccept"])->name("payment.accept");
+
+    Route::post("/{order}/payment/callback", [PaymentController::class, "callbackPayment"])->name("payment.callback");
 });
 
 /*Route::get('/dashboard', function () {

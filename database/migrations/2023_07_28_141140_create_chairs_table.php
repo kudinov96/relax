@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string("device_id");
             $table->string("device_code");
-            $table->integer("status");
             $table->timestamps();
         });
     }

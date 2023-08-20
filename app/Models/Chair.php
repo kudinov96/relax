@@ -12,7 +12,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property int     $id
  * @property string  $device_id
  * @property string  $device_code
- * @property integer $status
  *
  * @property Carbon $created_at
  * @property Carbon $updated_at
@@ -24,15 +23,29 @@ class Chair extends Model
     protected $table   = "chairs";
     protected $guarded = ["id"];
 
-    public function logs(): HasMany
+    public function logsChair(): HasMany
     {
-        return $this->hasMany(Log::class);
+        return $this->hasMany(LogChair::class);
     }
 
-    public function statusHuman(): Attribute
+    public function statusHuman(int $status)
     {
-        return Attribute::make(
-            get: fn () => $this->status === 3 ? "В процессе работы" : "Готово к использованию",
-        );
+        return $status === 3 ? "В процессе работы" : "Готово к использованию";
+    }
+
+    public function validateRates(int $minutes, int $costs): bool
+    {
+        $rates = [
+            10 => 5,
+            15 => 7,
+            20 => 9,
+            30 => 11,
+        ];
+
+        if (!isset($rates[$minutes]) || $rates[$minutes] !== $costs) {
+            return false;
+        }
+
+        return true;
     }
 }

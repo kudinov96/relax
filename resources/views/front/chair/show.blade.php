@@ -8,9 +8,9 @@
                 <div>
                     Статус:
                     <span @class([
-                        "ok" => $chair->status === 0,
-                        "busy" => $chair->status === 3,
-                    ])>{{ $chair->statusHuman }}</span>
+                        "ok"   => $status === 0,
+                        "busy" => $status === 3,
+                    ])>{{ $chair->statusHuman($status) }}</span>
                 </div>
             </div>
             <div class="location"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -19,7 +19,7 @@
         </div>
     </div>
 
-    @if($chair->status === 0)
+    @if($status === 0)
         <div id="info-text" class="info-price info-bg">
             <div class="container">
                 <p>Выберите длительность массажа</p>
@@ -28,7 +28,7 @@
         </div>
     @endif
 
-    @if($chair->status === 3)
+    @if($status === 3)
         <div id="busy-info" class="info-bg">
             <div class="container">
                 <p>Пожалуйста, дождитесь окончания работы кресла и обновите страницу</p>
@@ -45,7 +45,7 @@
 
     @include("why")
 
-    @if($chair->status === 0)
+    @if($status === 0)
         @include("feedback")
     @endif
 
