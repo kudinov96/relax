@@ -4,7 +4,7 @@
     <div id="product-info">
         <div class="container">
             <h1>Массажное кресло <span>{{ $chair->device_id }}</span></h1>
-            @if($status)
+            @if($status || $status === 0)
                 <div class="status">
                     <div>
                         Статус:
@@ -45,7 +45,7 @@
         </div>
     @endif
 
-    @if(!$status)
+    @if($status === null)
         <div id="busy-info" class="info-bg">
             <div class="container">
                 <p>Не удалось получить статус кресла, пожалуйста, обновите страницу</p>
