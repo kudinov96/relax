@@ -44,7 +44,7 @@ class PaymentController extends Controller
 
     public function paymentAccept(Order $order, ChairService $chairService)
     {
-        if (!$chairService->runChair($order->chair, $order->minutes)) {
+        if (!$chairService->runChair($order, $order->minutes)) {
             return response()->redirectToRoute("chair.fail.chair", ["order" => $order]);
         }
 

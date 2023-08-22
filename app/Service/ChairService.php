@@ -4,6 +4,7 @@ namespace App\Service;
 
 use App\Models\Chair;
 use App\Models\LogChair;
+use App\Models\Order;
 
 class ChairService
 {
@@ -27,9 +28,9 @@ class ChairService
         }
     }
 
-    public function runChair(Chair $chair, int $minutes): bool
+    public function runChair(Order $order, int $minutes): bool
     {
-        $deviceCode = $chair->device_code;
+        $deviceCode = $order->chair->device_code;
         $time       = $minutes;
         $request    = ChairApiService::URL . "sendCommand?deviceCode=$deviceCode&time=$time";
 
@@ -40,7 +41,8 @@ class ChairService
             );
 
             LogChair::query()->create([
-                "chair_id" => $chair->id,
+                "chair_id" => $order->chair->id,
+                "order_id" => $order->id,
                 "request"  => $request,
                 "response" => $response,
             ]);
@@ -48,7 +50,8 @@ class ChairService
             return true;
         } catch (\Exception $e) {
             LogChair::query()->create([
-                "chair_id" => $chair->id,
+                "chair_id" => $order->chair->id,
+                "order_id" => $order->id,
                 "request"  => $request,
                 "response" => $e->getMessage(),
             ]);

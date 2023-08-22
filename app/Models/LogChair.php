@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 /**
  * @property int    $id
  * @property int    $chair_id
+ * @property int    $order_id
  * @property string $request
  * @property string $response
  *
