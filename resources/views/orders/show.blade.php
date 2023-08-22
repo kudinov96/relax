@@ -18,9 +18,16 @@
                             <p class="font-bold mb-2">ID</p>
                             {{ $item->id }}
                         </div>
+                        <div class="mb-4">
+                            <p class="font-bold mb-2">Минуты</p>
+                            {{ $item->minutes }}
+                        </div><div class="mb-4">
+                            <p class="font-bold mb-2">Цена</p>
+                            {{ $item->costs }}
+                        </div>
                         <div>
                             <p class="font-bold mb-2">Ответ</p>
-                            @dump(json_decode($item->response))
+                            @dump($item->response)
                         </div>
                     </div>
                 </div>
