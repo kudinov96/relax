@@ -33,7 +33,7 @@ class PaymentController extends Controller
                 'accepturl' => route("payment.accept", ["order" => $order,]),
                 'cancelurl' => route("chair.fail.payment", ["chair" => $chair]),
                 'callbackurl' => route("payment.callback", ["order" => $order]),
-                'test' => 1,
+                'test' => config("payment.test_mode"),
             ]);
         } catch (\Exception $e) {
             $order->update([
