@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Chair;
 use App\Models\Order;
 use App\Service\ChairService;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
 class ChairController extends Controller
 {
@@ -31,10 +29,8 @@ class ChairController extends Controller
         ]);
     }
 
-    public function success(Request $request, Chair $chair, int $minutes)
+    public function success(Chair $chair, int $minutes)
     {
-        Log::debug(print_r($request->all(), true));
-
         return view("front.chair.success", [
             "chair"   => $chair,
             "minutes" => $minutes,

@@ -6,6 +6,7 @@ use App\Models\Chair;
 use App\Models\Order;
 use App\Service\ChairService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use WebToPay;
 
 class PaymentController extends Controller
@@ -42,8 +43,10 @@ class PaymentController extends Controller
         }
     }
 
-    public function paymentAccept(Order $order, ChairService $chairService)
+    public function paymentAccept(Request $request, Order $order, ChairService $chairService)
     {
+        Log::debug(print_r($request->all(), true));
+
         if (!$chairService->runChair($order, $order->minutes)) {
             return response()->redirectToRoute("chair.fail.chair", ["order" => $order]);
         }
