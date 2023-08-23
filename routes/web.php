@@ -28,13 +28,13 @@ Route::group(["middleware" => ['auth', 'verified']], function() {
 });
 
 Route::group(["prefix" => "chair"], function() {
-    Route::get("/{chair}", [ChairController::class, "show"])->name("chair.show");
-    Route::get("/{chair}/ready/{minutes}/{costs}", [ChairController::class, "ready"])->name("chair.ready");
-    Route::get("/{chair}/success/{minutes}", [ChairController::class, "success"])->name("chair.success");
-    Route::get("/{chair}/fail/payment", [ChairController::class, "failPayment"])->name("chair.fail.payment");
+    Route::get("/{deviceId}", [ChairController::class, "show"])->name("chair.show");
+    Route::get("/{deviceId}/ready/{minutes}/{costs}", [ChairController::class, "ready"])->name("chair.ready");
+    Route::get("/{deviceId}/success/{minutes}", [ChairController::class, "success"])->name("chair.success");
+    Route::get("/{deviceId}/ready/{minutes}/{costs}/redirect", [PaymentController::class, "paymentRedirect"])->name("payment.redirect");
+    Route::get("/{deviceId}/fail/payment", [ChairController::class, "failPayment"])->name("chair.fail.payment");
     Route::get("/{order}/fail/chair", [ChairController::class, "failChair"])->name("chair.fail.chair");
 
-    Route::get("/{chair}/ready/{minutes}/{costs}/redirect", [PaymentController::class, "redirectPayment"])->name("payment.redirect");
     Route::get("/{order}/payment/accept", [PaymentController::class, "paymentAccept"])->name("payment.accept");
 
     Route::post("/{order}/payment/callback", [PaymentController::class, "callbackPayment"])->name("payment.callback");

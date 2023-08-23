@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Chair extends Model
 {
     use HasFactory;
+    use Uuid;
 
     protected $table   = "chairs";
     protected $guarded = ["id"];
@@ -28,7 +29,7 @@ class Chair extends Model
         return $this->hasMany(LogChair::class);
     }
 
-    public function statusHuman(int $status)
+    public function statusHuman(int $status): string
     {
         return $status === 3 ? "В процессе работы" : "Готово к использованию";
     }
@@ -47,5 +48,10 @@ class Chair extends Model
         }
 
         return true;
+    }
+
+    public function scopeFindByDeviceId(Builder $builder, string $deviceId)
+    {
+        return $builder->where("device_id", $deviceId);
     }
 }

@@ -8,8 +8,14 @@ use App\Service\ChairService;
 
 class ChairController extends Controller
 {
-    public function show(Chair $chair, ChairService $chairService)
+    public function show(string $deviceId, ChairService $chairService)
     {
+        $chair  = $this->getChair($deviceId);
+
+        if (!$chair) {
+            abort(404);
+        }
+
         $status = $chairService->getStatus($chair);
 
         return view("front.chair.show", [
@@ -18,9 +24,13 @@ class ChairController extends Controller
         ]);
     }
 
-    public function ready(Chair $chair, int $minutes, int $costs)
+    public function ready(string $deviceId, int $minutes, int $costs)
     {
-        $chair->validateRates($minutes, $costs);
+        $chair  = $this->getChair($deviceId);
+
+        if (!$chair->validateRates($minutes, $costs)) {
+            abort(404);
+        }
 
         return view("front.chair.ready", [
             "chair"   => $chair,
@@ -29,38 +39,40 @@ class ChairController extends Controller
         ]);
     }
 
-    public function success(Chair $chair, int $minutes)
+    public function success(string $deviceId, int $minutes)
     {
+        $chair  = $this->getChair($deviceId);
+
         return view("front.chair.success", [
             "chair"   => $chair,
             "minutes" => $minutes,
         ]);
     }
 
-    public function failPayment(Order $order)
+    public function failPayment(string $deviceId)
     {
+        $chair = $this->getChair($deviceId);
+
         return view("front.chair.fail.payment", [
-            "chair" => $order->chair,
+            "chair" => $chair,
         ]);
     }
 
-    public function failChair(Order $order, ChairService $chairService)
+    public function failChair(Order $order)
     {
-        // Тут нужен какой-нибудь токен, так как это уязвимость
-        // Кто-то может зайти на эту страницу и сидеть в кресле сколько угодно
-
-        //$status = $chairService->getStatus($order->chair);
-
-        //if ($status === null) {
-            // Тут нужно выводить страницу, когда получение статус кресла невозможно
-        //}
-
-        //if ($status === 3) {
-            //abort(404);
-        //}
+        // Защита от умников, которые захотят бесконечно запускать кресло
+        if ($order->success_run_chair) {
+            abort(404);
+        }
 
         return view("front.chair.fail.chair", [
             "chair" => $order->chair,
+            "order" => $order,
         ]);
+    }
+
+    private function getChair(string $deviceId)
+    {
+        return Chair::query()->findByDeviceId($deviceId)->first();
     }
 }

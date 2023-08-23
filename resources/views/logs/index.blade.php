@@ -15,7 +15,7 @@
                                 <tr class="bg-gray-100">
                                     <th class="px-4 py-2 text-left">Дата & Время</th>
                                     <th class="px-4 py-2 text-left">Запрос</th>
-                                    <th class="px-4 py-2 text-left">ID заказа</th>
+                                    <th class="px-4 py-2 text-left">Заказ</th>
                                     <th class="px-4 py-2"></th>
                                 </tr>
                             </thead>
@@ -24,7 +24,7 @@
                                 <tr>
                                     <td class="border px-4 py-2">{{ $item->created_at }}</td>
                                     <td class="border px-4 py-2">{{ $item->request }}</td>
-                                    <td class="border px-4 py-2"><a href="{{ route("order.show", ["item" => $item->order]) }}">{{ $item->order_id }}</a></td>
+                                    <td class="border px-4 py-2"><a class="text-brown" href="{{ route("order.show", ["item" => $item->order]) }}">Заказ</a></td>
                                     <td class="border px-4 py-2 text-right">
                                         <a href="{{ route("log.show", ["item" => $item]) }}" class="bg-brown text-white py-2 px-2 rounded flex w-10">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">

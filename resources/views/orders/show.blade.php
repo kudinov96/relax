@@ -21,13 +21,18 @@
                         <div class="mb-4">
                             <p class="font-bold mb-2">Минуты</p>
                             {{ $item->minutes }}
-                        </div><div class="mb-4">
+                        </div>
+                        <div class="mb-4">
                             <p class="font-bold mb-2">Цена</p>
                             {{ $item->costs }}
                         </div>
+                        <div class="mb-4">
+                            <p class="font-bold mb-2">Кресло активировалось?</p>
+                            @if($item->success_run_chair) Да @else Нет @endif
+                        </div>
                         <div>
-                            <p class="font-bold mb-2">Ответ</p>
-                            @dump($item->response)
+                            <p class="font-bold mb-2">Ошибка</p>
+                            {{ $item->response }}
                         </div>
                     </div>
                 </div>

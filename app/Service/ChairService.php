@@ -47,6 +47,10 @@ class ChairService
                 "response" => $response,
             ]);
 
+            $order->update([
+                "success_run_chair" => true,
+            ]);
+
             return true;
         } catch (\Exception $e) {
             LogChair::query()->create([

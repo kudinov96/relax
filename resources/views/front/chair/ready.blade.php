@@ -13,7 +13,7 @@
     <div id="info-text">
         <div class="container">
             <p>Важно, чтобы в момент оплаты Вы уже сидели в кресле. В противном случае кресло не запустится.</p>
-            <p><a href="{{ route("payment.redirect", ["chair" => $chair, "minutes" => $minutes, "costs" => $costs]) }}" class="btn">Да, я сижу в кресле</a></p>
+            <p><a href="{{ route("payment.redirect", ["deviceId" => $chair->device_id, "minutes" => $minutes, "costs" => $costs]) }}" class="btn">Да, я сижу в кресле</a></p>
         </div>
     </div>
 

@@ -34,7 +34,7 @@
         <div id="busy-info" class="info-bg">
             <div class="container">
                 <p>Пожалуйста, дождитесь окончания работы кресла и обновите страницу</p>
-                <p><a href="{{ route("chair.show", ["chair" => $chair]) }}" class="btn">Обновить страницу</a></p>
+                <p><a href="{{ route("chair.show", ["deviceId" => $chair->device_id]) }}" class="btn">Обновить страницу</a></p>
                 <div class="feedback-wrapper">
                     <p>Заметили техническую неисправность?<br> Сообщите нам по телефону:</p>
                     <p><a href="tel:+371 267 467 04" class="phone"><svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -49,7 +49,7 @@
         <div id="busy-info" class="info-bg">
             <div class="container">
                 <p>Не удалось получить статус кресла, пожалуйста, обновите страницу</p>
-                <p><a href="{{ route("chair.show", ["chair" => $chair]) }}" class="btn">Обновить страницу</a></p>
+                <p><a href="{{ route("chair.show", ["deviceId" => $chair->device_id]) }}" class="btn">Обновить страницу</a></p>
                 <div class="feedback-wrapper">
                     <p>Заметили техническую неисправность?<br> Сообщите нам по телефону:</p>
                     <p><a href="tel:+371 267 467 04" class="phone"><svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">

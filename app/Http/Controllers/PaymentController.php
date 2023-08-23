@@ -6,13 +6,14 @@ use App\Models\Chair;
 use App\Models\Order;
 use App\Service\ChairService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use WebToPay;
 
 class PaymentController extends Controller
 {
-    public function redirectPayment(Chair $chair, int $minutes, int $costs)
+    public function paymentRedirect(string $deviceId, int $minutes, int $costs)
     {
+        $chair = Chair::query()->findByDeviceId($deviceId)->first();
+
         if (!$chair->validateRates($minutes, $costs)) {
             abort(404);
         }
@@ -32,7 +33,7 @@ class PaymentController extends Controller
                 'currency' => 'EUR',
                 'country' => 'LT',
                 'accepturl' => route("payment.accept", ["order" => $order,]),
-                'cancelurl' => route("chair.fail.payment", ["chair" => $chair]),
+                'cancelurl' => route("chair.fail.payment", ["deviceId" => $chair->device_id]),
                 'callbackurl' => route("payment.callback", ["order" => $order]),
                 'test' => config("payment.test_mode"),
             ]);
@@ -43,15 +44,13 @@ class PaymentController extends Controller
         }
     }
 
-    public function paymentAccept(Request $request, Order $order, ChairService $chairService)
+    public function paymentAccept(Order $order, ChairService $chairService)
     {
-        Log::debug(print_r($request->all(), true));
-
         if (!$chairService->runChair($order, $order->minutes)) {
             return response()->redirectToRoute("chair.fail.chair", ["order" => $order]);
         }
 
-        return response()->redirectToRoute("chair.success", ["chair" => $order->chair, "minutes" => $order->minutes]);
+        return response()->redirectToRoute("chair.success", ["deviceId" => $order->chair->device_id, "minutes" => $order->minutes]);
     }
 
     public function callbackPayment(Request $request, Order $order)
