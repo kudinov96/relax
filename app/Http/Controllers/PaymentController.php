@@ -31,7 +31,8 @@ class PaymentController extends Controller
                 'orderid' => $order->id,
                 'amount' => $costs . '00',
                 'currency' => 'EUR',
-                'country' => 'LT',
+                'country' => 'LV',
+                'lang' => 'LAV', // RUS
                 'accepturl' => route("payment.accept", ["order" => $order,]),
                 'cancelurl' => route("chair.fail.payment", ["deviceId" => $chair->device_id]),
                 'callbackurl' => route("payment.callback", ["order" => $order]),
