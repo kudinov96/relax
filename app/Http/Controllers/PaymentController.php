@@ -29,7 +29,7 @@ class PaymentController extends Controller
                 'projectid' => config('webtopay.projectid'),
                 'sign_password' => config('webtopay.sign_password'),
                 'orderid' => $order->id,
-                'amount' => $costs,
+                'amount' => $costs . '00',
                 'currency' => 'EUR',
                 'country' => 'LT',
                 'accepturl' => route("payment.accept", ["order" => $order,]),
