@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Str;
 use Vinkla\Hashids\Facades\Hashids;
 
 /**
@@ -46,12 +47,23 @@ class Order extends Model
         );
     }
 
-    public static function boot()
+    protected static function generateUniqueShortId($length = 8): string
+    {
+        $shortId = Str::random($length);
+
+        while (static::where('short_id', $shortId)->exists()) {
+            $shortId = Str::random($length);
+        }
+
+        return $shortId;
+    }
+
+    protected static function boot()
     {
         parent::boot();
 
         static::creating(function ($model) {
-            $model->short_id = Hashids::connection('short_id')->encode(time());
+            $model->short_id = static::generateUniqueShortId();
         });
     }
 }
