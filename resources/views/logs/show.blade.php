@@ -15,8 +15,8 @@
                             {{ $item->created_at }}
                         </div>
                         <div class="mb-4">
-                            <p class="font-bold mb-2">Код кресла</p>
-                            {{ $item->chair->device_code }}
+                            <p class="font-bold mb-2">ID кресла</p>
+                            {{ $item->chair->device_id }}
                         </div>
                         <div class="mb-4">
                             <p class="font-bold mb-2">Запрос</p>

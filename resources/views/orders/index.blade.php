@@ -15,7 +15,7 @@
                                 <tr class="bg-gray-100">
                                     <th class="px-4 py-2 text-left">Дата & Время</th>
                                     <th class="px-4 py-2 text-left">ID</th>
-                                    <th class="px-4 py-2 text-left">Код кресла</th>
+                                    <th class="px-4 py-2 text-left">ID кресла</th>
                                     <th class="px-4 py-2 text-left">Минуты</th>
                                     <th class="px-4 py-2 text-left">Сумма</th>
                                     <th class="px-4 py-2 text-left">Кресло активировалось?</th>
@@ -28,7 +28,7 @@
                                 <tr>
                                     <td class="border px-4 py-2">{{ $item->created_at }}</td>
                                     <td class="border px-4 py-2">{{ $item->id }}</td>
-                                    <td class="border px-4 py-2">{{ $item->chair->device_code }}</td>
+                                    <td class="border px-4 py-2">{{ $item->chair->device_id }}</td>
                                     <td class="border px-4 py-2">{{ $item->minutes }}</td>
                                     <td class="border px-4 py-2">{{ $item->costs }}</td>
                                     <td class="border px-4 py-2">@if($item->success_run_chair) Да @else Нет @endif</td>
