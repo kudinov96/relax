@@ -19,6 +19,10 @@
                             {{ $item->id }}
                         </div>
                         <div class="mb-4">
+                            <p class="font-bold mb-2">Код кресла</p>
+                            {{ $item->chair->device_code }}
+                        </div>
+                        <div class="mb-4">
                             <p class="font-bold mb-2">Минуты</p>
                             {{ $item->minutes }}
                         </div>

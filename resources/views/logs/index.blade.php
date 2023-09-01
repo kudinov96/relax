@@ -14,6 +14,7 @@
                             <thead>
                                 <tr class="bg-gray-100">
                                     <th class="px-4 py-2 text-left">Дата & Время</th>
+                                    <th class="px-4 py-2 text-left">Код кресла</th>
                                     <th class="px-4 py-2 text-left">Запрос</th>
                                     <th class="px-4 py-2 text-left">Заказ</th>
                                     <th class="px-4 py-2"></th>
@@ -23,6 +24,7 @@
                             @foreach($items as $item)
                                 <tr>
                                     <td class="border px-4 py-2">{{ $item->created_at }}</td>
+                                    <td class="border px-4 py-2">{{ $item->chair->device_code }}</td>
                                     <td class="border px-4 py-2">{{ $item->request }}</td>
                                     <td class="border px-4 py-2"><a class="text-brown" href="{{ route("order.show", ["item" => $item->order]) }}">Заказ</a></td>
                                     <td class="border px-4 py-2 text-right">
