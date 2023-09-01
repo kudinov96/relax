@@ -41,7 +41,7 @@ class ChairController extends Controller
 
     public function success(string $deviceId, int $minutes)
     {
-        $chair  = $this->getChair($deviceId);
+        $chair = $this->getChair($deviceId);
 
         return view("front.chair.success", [
             "chair"   => $chair,

@@ -30,6 +30,10 @@
                             <p class="font-bold mb-2">Кресло активировалось?</p>
                             @if($item->success_run_chair) Да @else Нет @endif
                         </div>
+                        <div class="mb-4">
+                            <p class="font-bold mb-2">Платеж прошел?</p>
+                            @if($item->success_payment) Да @else Нет @endif
+                        </div>
                         <div>
                             <p class="font-bold mb-2">Ошибка</p>
                             {{ $item->response }}

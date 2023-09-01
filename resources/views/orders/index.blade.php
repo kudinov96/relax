@@ -18,6 +18,7 @@
                                     <th class="px-4 py-2 text-left">Минуты</th>
                                     <th class="px-4 py-2 text-left">Сумма</th>
                                     <th class="px-4 py-2 text-left">Кресло активировалось?</th>
+                                    <th class="px-4 py-2 text-left">Платеж прошел?</th>
                                     <th class="px-4 py-2"></th>
                                 </tr>
                             </thead>
@@ -29,6 +30,7 @@
                                     <td class="border px-4 py-2">{{ $item->minutes }}</td>
                                     <td class="border px-4 py-2">{{ $item->costs }}</td>
                                     <td class="border px-4 py-2">@if($item->success_run_chair) Да @else Нет @endif</td>
+                                    <td class="border px-4 py-2">@if($item->success_payment) Да @else Нет @endif</td>
                                     <td class="border px-4 py-2 text-right">
                                         <a href="{{ route("order.show", ["item" => $item]) }}" class="bg-brown text-white py-2 px-2 rounded flex w-10">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">

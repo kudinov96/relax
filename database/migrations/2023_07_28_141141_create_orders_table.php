@@ -12,12 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->uuid("id")->primary();
+            $table->id();
             $table->uuid("chair_id")->constrained("chairs")->cascadeOnDelete();
             $table->integer("minutes");
             $table->integer("costs");
             $table->text("response")->nullable();
             $table->boolean("success_run_chair")->default(false);
+            $table->boolean("success_payment")->default(false);
             $table->timestamps();
         });
     }

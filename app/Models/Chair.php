@@ -31,7 +31,7 @@ class Chair extends Model
 
     public function statusHuman(int $status): string
     {
-        return $status === 3 ? "В процессе работы" : "Готово к использованию";
+        return $status === 3 ? __("В процессе работы") : __("Готово к использованию");
     }
 
     public function validateRates(int $minutes, int $costs): bool

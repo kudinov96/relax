@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int    $minutes
  * @property int    $costs
  * @property bool   $success_run_chair
+ * @property bool   $success_payment
  *
  * @property Carbon $created_at
  * @property Carbon $updated_at
@@ -22,7 +23,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Order extends Model
 {
     use HasFactory;
-    use Uuid;
 
     protected $table   = "orders";
     protected $guarded = ["id"];

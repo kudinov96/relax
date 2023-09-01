@@ -24,6 +24,18 @@ class PaymentController extends Controller
             "costs"    => $costs,
         ]);
 
+        switch (app()->getLocale()) {
+            case "lv":
+                $lang = "LAV";
+                break;
+            case "en":
+                $lang = "ENG";
+                break;
+            default:
+                $lang = "RUS";
+                break;
+        }
+
         try {
             WebToPay::redirectToPayment([
                 'projectid' => config('webtopay.projectid'),
@@ -32,10 +44,10 @@ class PaymentController extends Controller
                 'amount' => $costs . '00',
                 'currency' => 'EUR',
                 'country' => 'LV',
-                'lang' => 'LAV', // RUS
-                'accepturl' => route("payment.accept", ["order" => $order,]),
-                'cancelurl' => route("chair.fail.payment", ["deviceId" => $chair->device_id]),
-                'callbackurl' => route("payment.callback", ["order" => $order]),
+                'lang' => $lang,
+                'accepturl' => route("payment.accept", ["order" => $order, "lang" => app()->getLocale()]),
+                'cancelurl' => route("chair.fail.payment", ["deviceId" => $chair->device_id, "lang" => app()->getLocale()]),
+                'callbackurl' => route("payment.callback", ["order" => $order, "lang" => app()->getLocale()]),
                 'test' => config("payment.test_mode"),
             ]);
         } catch (\Exception $e) {
@@ -47,11 +59,15 @@ class PaymentController extends Controller
 
     public function paymentAccept(Order $order, ChairService $chairService)
     {
+        $order->update([
+            "success_payment" => true,
+        ]);
+
         if (!$chairService->runChair($order, $order->minutes)) {
-            return response()->redirectToRoute("chair.fail.chair", ["order" => $order]);
+            return response()->redirectToRoute("chair.fail.chair", ["order" => $order, "lang" => app()->getLocale()]);
         }
 
-        return response()->redirectToRoute("chair.success", ["deviceId" => $order->chair->device_id, "minutes" => $order->minutes]);
+        return response()->redirectToRoute("chair.success", ["deviceId" => $order->chair->device_id, "minutes" => $order->minutes, "lang" => app()->getLocale()]);
     }
 
     public function callbackPayment(Request $request, Order $order)

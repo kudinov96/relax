@@ -72,22 +72,23 @@ header .container {
 	align-items: center;
 	justify-content: center;
 	width: 265px;
-	height: 60px; 
+	height: 60px;
 	color: #FFF;
 	font-family: 'Ubuntu', sans-serif;
 	text-align: center;
 	font-size: 22px;
 	font-style: normal;
 	font-weight: 400;
-	line-height: normal; 
+	line-height: normal;
 	border-radius: 5px;
-	background: #82655F;
+	background: #82655F !important;
 	box-shadow: 0px 30px 25px 0px rgba(0, 0, 0, 0.18), 0px 4px 0px 0px #584541;
 	border: 0px;
 	margin: 0 auto;
 }
-.btn:hover {
-	background: #82655F;
+.btn:hover,
+.btn:active {
+	background: #584541 !important;
 	box-shadow: 0px 30px 25px 0px rgba(0, 0, 0, 0.18), 0px 4px 0px 0px #584541;
 }
 .feedback-wrapper {
@@ -370,4 +371,45 @@ h1 span {
 }
 #for-home.product-char_2 {
 	padding: 45px 0px 20px 0px;
+}
+.acceptance label > input {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+}
+.acceptance label > span {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	user-select: none;
+	font-size: 16px;
+	text-align: left;
+}
+.acceptance label > span::before {
+	content: '';
+	display: inline-block;
+	width: 28px;
+	height: 28px;
+	flex-shrink: 0;
+	flex-grow: 0;
+	border: 0px;
+	border-radius: 0px;
+	margin-right: 12px;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 50% 50%;
+	background-color: #82655F;
+}
+.acceptance label > input:checked+span::before {
+	border-color: #82655F;
+	background-color: #82655F;
+	background-image: url('data:image/svg+xml,<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(%23clip0_107_30)"><path d="M8.67531 1.26953L3.58017 5.99632L1.4254 3.69682L0 5.0325L3.48114 8.74748L10 2.70546L8.67531 1.26953Z" fill="white"/></g><defs><clipPath id="clip0_107_30"><rect width="10" height="10" fill="white"/></clipPath></defs></svg> ');
+}
+.acceptance label > span a {
+	text-decoration: underline;
+}
+.disabled-link {
+	pointer-events: none;
+	opacity: 0.5;
+	cursor: not-allowed;
 }

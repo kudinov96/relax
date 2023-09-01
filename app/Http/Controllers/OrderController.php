@@ -9,7 +9,7 @@ class OrderController extends Controller
 {
     public function index(): Response
     {
-        $items = Order::latest()->paginate(10);
+        $items = Order::latest()->paginate(50);
 
         return response()->view("orders.index", [
             "items" => $items,

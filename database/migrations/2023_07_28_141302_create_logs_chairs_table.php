@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('logs_chairs', function (Blueprint $table) {
             $table->id();
             $table->uuid("chair_id")->constrained("chairs")->cascadeOnDelete();
-            $table->uuid("order_id")->constrained("orders")->cascadeOnDelete();
+            $table->unsignedBigInteger("order_id")->constrained("orders")->cascadeOnDelete();
             $table->text("request");
             $table->text("response");
             $table->timestamps();
