@@ -40,7 +40,7 @@ class PaymentController extends Controller
             WebToPay::redirectToPayment([
                 'projectid' => config('webtopay.projectid'),
                 'sign_password' => config('webtopay.sign_password'),
-                'orderid' => $order->id,
+                'orderid' => $order->short_id,
                 'amount' => $costs . '00',
                 'currency' => 'EUR',
                 'country' => 'LV',

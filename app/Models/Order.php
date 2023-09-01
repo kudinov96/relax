@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Vinkla\Hashids\Facades\Hashids;
 
 /**
  * @property int    $id
@@ -16,6 +17,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int    $costs
  * @property bool   $success_run_chair
  * @property bool   $success_payment
+ * @property bool   $short_id
  *
  * @property Carbon $created_at
  * @property Carbon $updated_at
@@ -42,5 +44,14 @@ class Order extends Model
         return Attribute::make(
             get: fn ($value) => Carbon::parse($value)->setTimezone($user->timezone)->format("d.m.Y H:i:s"),
         );
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $model->short_id = Hashids::connection('short_id')->encode(time());
+        });
     }
 }
