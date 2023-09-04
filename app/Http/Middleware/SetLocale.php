@@ -15,7 +15,7 @@ class SetLocale
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $lang = $request->input('lang') ?? "ru";
+        $lang = $request->input('lang') ?? "lv";
 
         app()->setLocale($lang);
 

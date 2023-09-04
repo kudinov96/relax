@@ -24,18 +24,41 @@ header .container {
 	align-items: center;
 	justify-content: space-between;
 }
-.lang a {
+.lang .btn {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	width: 56px;
 	height: 56px;
 	border-radius: 50%;
-	background: #D7C6B2;
+	background: #D7C6B2 !important;
 	text-decoration: none;
 	font-size: 14px;
-	font-weight: 700; 
+	font-weight: 700;
 	color: #231F20;
+	border: 0px !important;
+	box-shadow: unset !important;
+}
+.lang .btn:hover {
+	color: #fff;
+}
+.lang .btn:after {
+	display: none;
+}
+.dropdown-menu {
+	width: 56px;
+	min-width: unset;
+	background: #D7C6B2;
+}
+.dropdown-toggle{
+	text-transform: uppercase;
+}
+.dropdown-item{
+	text-transform: uppercase;
+}
+.dropdown-item:hover {
+	color: #fff;
+	background: #584541;
 }
 #info {
 	margin-bottom: 24px;

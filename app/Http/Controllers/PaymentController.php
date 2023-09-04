@@ -25,14 +25,14 @@ class PaymentController extends Controller
         ]);
 
         switch (app()->getLocale()) {
-            case "lv":
-                $lang = "LAV";
+            case "ru":
+                $lang = "RUS";
                 break;
             case "en":
                 $lang = "ENG";
                 break;
             default:
-                $lang = "RUS";
+                $lang = "LAV";
                 break;
         }
 
