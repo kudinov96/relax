@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property int     $id
  * @property string  $device_id
  * @property string  $device_code
+ * @property string  $address
  *
  * @property Carbon $created_at
  * @property Carbon $updated_at

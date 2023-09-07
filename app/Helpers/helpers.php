@@ -29,3 +29,14 @@ if (!function_exists("otherLangs")) {
     }
 }
 
+if (!function_exists("moreLink")) {
+    function moreLink() {
+        $langs = [
+            "lv" => "https://relaxtime.lv/",
+            "ru" => "https://relaxtime.lv/ru/",
+            "en" => "https://relaxtime.lv/en/",
+        ];
+
+        return $langs[app()->getLocale()];
+    }
+}

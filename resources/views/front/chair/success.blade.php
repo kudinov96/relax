@@ -1,5 +1,7 @@
 @extends("layouts.front")
 
+@section("title", $chair->device_id)
+
 @section("content")
 
     <div id="info">
@@ -47,7 +49,7 @@
                 <li>{{ __("Облегчение болей в суставах") }}</li>
                 <li>{{ __("Укрепление нервной системы") }}</li>
             </ul>
-            <p><a href="https://relaxtime.lv/ru/" target="_blank" class="btn">{{ __("Узнать подробнее") }}</a></p>
+            <p><a href="{{ moreLink() }}" target="_blank" class="btn">{{ __("Узнать подробнее") }}</a></p>
         </div>
     </div>
 

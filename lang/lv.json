@@ -10,14 +10,14 @@
   "Снижает напряжение и стресс": "Mazina satraukumu un stresu",
   "Улучшает кровообращение и общее самочувствие": "Uzlabo asinsriti un kopējo pašsajūtu",
   "Способствует укреплению иммунитета": "Veicina imūnsistēmas nostiprināšanu",
-  "Заметили техническую неисправность?": "Esat pmanījuši tehnisku kļūmi?",
+  "Заметили техническую неисправность?": "Esat pamanījuši tehnisku kļūmi?",
   "Сообщите нам по телефону": "Sazinieties ar mums pa telefonu",
   "Политика конфиденциальности": "Konfidencialitātes politika",
   "Вы уже сели в кресло?": "Jūs jau sēžat krēslā?",
   "Важно, чтобы в момент оплаты Вы уже сидели в кресле. В противном случае кресло не запустится": "Svarīgi, lai apmaksas brīdī Jūs jau sēdētu krēslā. Pretējā gadījumā krēsls neuzsāks darbību",
   "Согласен с": "Es piekrītu masāžas krēsla",
   "правилами использования": "izmantošanas noteikumiem",
-  "массажного кресла": "",
+  "массажного кресла": " ",
   "Да, я сижу в кресле": "Jā, es sēžu krēslā",
   "Связь с креслом": "Zudis savienojums",
   "потеряна": "ar krēslu",
@@ -36,7 +36,7 @@
   "Длительность массажа": "Masāžas ilgums",
   "Чтобы поставить кресло на паузу и встать, Вы можете нажать на кнопку на правом подлокотнике кресла": "Lai apturētu krēslu un pieceltos, jūs varat nospiest pogu, kas atrodas uz krēsla roku balsta labajā pusē",
   "Снова активировать кресло после паузы вы можете нажав на ту же кнопку. Однако учтите, что пока кресло стоит на паузе, время Ваше время массажа продолжает идти": "Lai atjaunotu krēsla darbību pēc pauzes, jūs varat nospiest to pašu pogu. Bet, ņemiet vērā, kamēr krēsls ir apturēts, jūsu masāžas laiks turpinās iztecēt",
-  "А вы знали, что такое кресло можно купить домой": "Vai zinājāt, ka šādu krēslu iespējams iegādāties mājās?",
+  "А вы знали, что такое кресло можно купить домой": "Vai zinājāt, ka šādu krēslu iespējams iegādāties mājās",
   "Преимущества регулярного использования кресла дома": "Regulāras krēsla lietošanas priekšrocības",
   "Улучшение иммунитета": "Imūnsistēmas uzlabošana",
   "Повышение тонуса кожи": "Paaugstināts ādas tonuss",
@@ -44,6 +44,5 @@
   "Расслабление мышц": "Muskuļu atslābums",
   "Облегчение болей в суставах": "Sāpju atvieglošana locītavās",
   "Укрепление нервной системы": "Nervu sistēmas nostiprināšana",
-  "Узнать подробнее": "Uzzināt vairāk",
-  "Готово к использованию": "Gatavs lietošanai"
+  "Узнать подробнее": "Uzzināt vairāk"
 }

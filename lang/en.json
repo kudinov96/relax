@@ -32,11 +32,11 @@
   "Обновить страницу": "Refresh the page",
   "Не удалось получить статус кресла, пожалуйста, обновите страницу": "We couldn't receive the status of the chair. Please, try to refresh the page",
   "Платеж получен": "Your payment has been received",
-  "Желаем Вам приятного массажа": "We wish you a pleasant massage!",
+  "Желаем Вам приятного массажа": "We wish you a pleasant massage",
   "Длительность массажа": "Massage duration",
   "Чтобы поставить кресло на паузу и встать, Вы можете нажать на кнопку на правом подлокотнике кресла": "To pause the chair and stand up, you can press the button on the right armrest of the chair",
   "Снова активировать кресло после паузы вы можете нажав на ту же кнопку. Однако учтите, что пока кресло стоит на паузе, время Ваше время массажа продолжает идти": "You can reactivate the chair after a pause by pressing the same button. However, keep in mind that while the chair is on pause, the time of your massage continues to pass",
-  "А вы знали, что такое кресло можно купить домой": "Did you know that you can buy such a chair for your home?",
+  "А вы знали, что такое кресло можно купить домой": "Did you know that you can buy such a chair for your home",
   "Преимущества регулярного использования кресла дома": "Benefits of regular use of the chair at home",
   "Улучшение иммунитета": "Improved immunity",
   "Повышение тонуса кожи": "Improved skin tone",
@@ -44,6 +44,5 @@
   "Расслабление мышц": "Muscle relaxation",
   "Облегчение болей в суставах": "Joint pain relief",
   "Укрепление нервной системы": "Strengthened nervous system",
-  "Узнать подробнее": "Learn more",
-  "Готово к использованию": "Ready to use"
+  "Узнать подробнее": "Learn more"
 }
