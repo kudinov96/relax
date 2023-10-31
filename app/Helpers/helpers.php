@@ -40,3 +40,15 @@ if (!function_exists("moreLink")) {
         return $langs[app()->getLocale()];
     }
 }
+
+if (!function_exists("policyLink")) {
+    function policyLink() {
+        $langs = [
+            "lv" => "https://relaxtime.lv/masazas-kresla-lietosanas-noteikumi/",
+            "ru" => "https://relaxtime.lv/ru/pravila-ispolzovaniya-massazhnogo-kresla/",
+            "en" => "https://relaxtime.lv/en/massage-chair-usage-rules/",
+        ];
+
+        return $langs[app()->getLocale()];
+    }
+}
