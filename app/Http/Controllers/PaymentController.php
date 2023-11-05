@@ -75,5 +75,7 @@ class PaymentController extends Controller
         $order->update([
             "response" => $request->all(),
         ]);
+
+        return "OK";
     }
 }
