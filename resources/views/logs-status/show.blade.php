@@ -20,7 +20,7 @@
                         </div>
                         <div class="mb-4">
                             <p class="font-bold mb-2">Сообщение</p>
-                            {{ $item->message }}
+                            @dump($item->message)
                         </div>
                         <div>
                             <p class="font-bold mb-2">IP клиента</p>
