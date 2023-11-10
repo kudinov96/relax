@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Chair;
 use App\Models\Order;
 use App\Service\ChairService;
+use Illuminate\Http\Request;
 
 class ChairController extends Controller
 {
-    public function show(string $deviceId, ChairService $chairService)
+    public function show(Request $request, string $deviceId, ChairService $chairService)
     {
         $chair  = $this->getChair($deviceId);
 
@@ -16,7 +17,7 @@ class ChairController extends Controller
             abort(404);
         }
 
-        $status = $chairService->getStatus($chair);
+        $status = $chairService->getStatus($chair, $request);
 
         return view("front.chair.show", [
             "chair"  => $chair,
