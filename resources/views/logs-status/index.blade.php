@@ -15,7 +15,6 @@
                                 <tr class="bg-gray-100">
                                     <th class="px-4 py-2 text-left">Дата & Время</th>
                                     <th class="px-4 py-2 text-left">ID кресла</th>
-                                    <th class="px-4 py-2 text-left">Сообщение</th>
                                     <th class="px-4 py-2 text-left">IP</th>
                                     <th class="px-4 py-2"></th>
                                 </tr>
