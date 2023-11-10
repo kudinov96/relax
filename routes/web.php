@@ -2,7 +2,8 @@
 
     use App\Http\Controllers\ChairController;
     use App\Http\Controllers\LogController;
-    use App\Http\Controllers\OrderController;
+use App\Http\Controllers\LogStatusController;
+use App\Http\Controllers\OrderController;
     use App\Http\Controllers\PaymentController;
     use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,9 @@ use Illuminate\Support\Facades\Route;
 Route::group(["middleware" => ['auth', 'verified']], function() {
     Route::get('logs', [LogController::class, "index"])->name("log.index");
     Route::get('logs/{item}', [LogController::class, "show"])->name("log.show");
+
+    Route::get('logs-status', [LogStatusController::class, "index"])->name("log-status.index");
+    Route::get('logs-status/{item}', [LogStatusController::class, "show"])->name("log-status.show");
 
     Route::get('orders', [OrderController::class, "index"])->name("order.index");
     Route::get('orders/{item}', [OrderController::class, "show"])->name("order.show");

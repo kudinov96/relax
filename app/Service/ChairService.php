@@ -4,7 +4,9 @@ namespace App\Service;
 
 use App\Models\Chair;
 use App\Models\LogChair;
+use App\Models\LogChairStatus;
 use App\Models\Order;
+use Illuminate\Http\Request;
 
 class ChairService
 {
@@ -15,15 +17,31 @@ class ChairService
         $this->chairApiService = app(ChairApiService::class);
     }
 
-    public function getStatus(Chair $chair): ?int
+    public function getStatus(Chair $chair, Request $request): ?int
     {
         try {
             $deviceInfo = $this->chairApiService->deviceInfo(
                 deviceCode: $chair->device_code,
             );
 
-            return isset($deviceInfo["data"][0]["status"]) ? $deviceInfo["data"][0]["status"] : null;
+            if (!isset($deviceInfo["data"][0]["status"])) {
+                LogChairStatus::query()->create([
+                    "chair_id" => $chair->id,
+                    "message"  => $deviceInfo,
+                    "ip"       => $request->getClientIp() ?? null,
+                ]);
+
+                return null;
+            }
+
+            return $deviceInfo["data"][0]["status"];
         } catch (\Exception $e) {
+            LogChairStatus::query()->create([
+                "chair_id" => $chair->id,
+                "message"  => $e->getCode() . " | " . $e->getFile() . " | " .  $e->getMessage(),
+                "ip"       => $request->getClientIp() ?? null,
+            ]);
+
             return null;
         }
     }

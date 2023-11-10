@@ -13,7 +13,10 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('log.index')" :active="request()->routeIs('log.*')">
-                        Логи кресла
+                        Логи кресел
+                    </x-nav-link>
+                    <x-nav-link :href="route('log-status.index')" :active="request()->routeIs('log-status.*')">
+                        Логи статусов кресел
                     </x-nav-link>
                     <x-nav-link :href="route('order.index')" :active="request()->routeIs('order.*')">
                         Заказы
@@ -71,7 +74,10 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('log.index')" :active="request()->routeIs('log.*')">
-                Логи кресла
+                Логи кресел
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('log-status.index')" :active="request()->routeIs('log-status.*')">
+                Логи статусов кресел
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('order.index')" :active="request()->routeIs('order.*')">
                 Заказы
