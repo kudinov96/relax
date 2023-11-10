@@ -37,12 +37,7 @@ class Chair extends Model
 
     public function validateRates(int $minutes, int $costs): bool
     {
-        $rates = [
-            10 => 5,
-            15 => 7,
-            20 => 9,
-            30 => 11,
-        ];
+        $rates = rates();
 
         if (!isset($rates[$minutes]) || $rates[$minutes] !== $costs) {
             return false;

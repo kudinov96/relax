@@ -52,3 +52,15 @@ if (!function_exists("policyLink")) {
         return $langs[app()->getLocale()];
     }
 }
+
+if (!function_exists("rates")) {
+    function rates() {
+        return [
+            10 => 3,
+            15 => 4,
+            20 => 5,
+            25 => 6,
+            30 => 7,
+        ];
+    }
+}

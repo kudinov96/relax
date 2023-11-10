@@ -1,4 +1,3 @@
-<p><a href="{{ route("chair.ready", ["deviceId" => $chair->device_id, "minutes" => 10, "costs" => 5, "lang" => app()->getLocale()]) }}" class="btn">10 {{ __("минут") }} - €5.00</a></p>
-<p><a href="{{ route("chair.ready", ["deviceId" => $chair->device_id, "minutes" => 15, "costs" => 7, "lang" => app()->getLocale()]) }}" class="btn">15 {{ __("минут") }} - €7.00</a></p>
-<p><a href="{{ route("chair.ready", ["deviceId" => $chair->device_id, "minutes" => 20, "costs" => 9, "lang" => app()->getLocale()]) }}" class="btn hot">20 {{ __("минут") }} - €9.00</a></p>
-<p><a href="{{ route("chair.ready", ["deviceId" => $chair->device_id, "minutes" => 30, "costs" => 11, "lang" => app()->getLocale()]) }}" class="btn">30 {{ __("минут") }} - €11.00</a></p>
+@foreach(rates() as $key => $value)
+    <p><a href="{{ route("chair.ready", ["deviceId" => $chair->device_id, "minutes" => $key, "costs" => $value, "lang" => app()->getLocale()]) }}" @class(["btn", "hot" => $key === 20])>{{ $key }} {{ __("минут") }} - €{{ $value }}.00</a></p>
+@endforeach
