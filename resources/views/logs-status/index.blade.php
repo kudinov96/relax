@@ -25,7 +25,6 @@
                                 <tr>
                                     <td class="border px-4 py-2">{{ $item->created_at }}</td>
                                     <td class="border px-4 py-2">{{ $item->chair->device_id }}</td>
-                                    <td class="border px-4 py-2">{{ $item->message }}</td>
                                     <td class="border px-4 py-2">{{ $item->ip }}</td>
                                     <td class="border px-4 py-2 text-right">
                                         <a href="{{ route("log-status.show", ["item" => $item]) }}" class="bg-brown text-white py-2 px-2 rounded flex w-10">
