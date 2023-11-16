@@ -42,6 +42,7 @@ Route::group(["prefix" => "chair"], function() {
     Route::get("/{order}/payment/accept", [PaymentController::class, "paymentAccept"])->name("payment.accept");
 
     Route::post("/{order}/payment/callback", [PaymentController::class, "callbackPayment"])->name("payment.callback");
+    Route::get("/{order}/payment/callback", [PaymentController::class, "callbackPayment"]);
 });
 
 /*Route::get('/dashboard', function () {
