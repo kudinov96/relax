@@ -16,7 +16,7 @@
                         Логи кресел
                     </x-nav-link>
                     <x-nav-link :href="route('log-status.index')" :active="request()->routeIs('log-status.*')">
-                        Логи статусов кресел
+                        Ошибки статуса кресла
                     </x-nav-link>
                     <x-nav-link :href="route('order.index')" :active="request()->routeIs('order.*')">
                         Заказы
@@ -77,7 +77,7 @@
                 Логи кресел
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('log-status.index')" :active="request()->routeIs('log-status.*')">
-                Логи статусов кресел
+                Ошибки статуса кресла
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('order.index')" :active="request()->routeIs('order.*')">
                 Заказы
