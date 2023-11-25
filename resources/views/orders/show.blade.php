@@ -40,7 +40,7 @@
                         </div>
                         <div>
                             <p class="font-bold mb-2">Ошибка</p>
-                            {{ $item->response }}
+                            @dump($item->response)
                         </div>
                     </div>
                 </div>
